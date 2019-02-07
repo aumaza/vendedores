@@ -1,0 +1,2 @@
+# vendedores
+practica C
