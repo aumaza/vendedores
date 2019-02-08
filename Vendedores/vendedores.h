@@ -50,6 +50,7 @@ void showVendedoresComisiones(ArrayList* lista);
 void showVendedorAlfabetico(ArrayList* lista);
 void showVendedorMonto(ArrayList* lista);
 void vendeMax(ArrayList* lista);
+void vendedoresMasGanadoresNivel(ArrayList* lista);
 
 
 //PERSISTENCIA
@@ -68,6 +69,12 @@ void VendedorComisionNivel(ArrayList* lista);
 int cmpVendedorNivel(void* x, void* y);
 int cmpVendedorName(void* x, void* y);
 int cmpVendedorMonto(void* x, void* y);
+
+
+void header1();
+void header2();
+void footer1();
+void footer2();
 
 
 

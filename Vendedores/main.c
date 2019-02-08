@@ -148,10 +148,10 @@ int main()
                 printf("\n2. Listar Vendedores con Comisiones");
                 printf("\n3. Seleccionar Nivel");
                 printf("\n4. Listar Alfabeticamente");
-                printf("\n5. Listar por Montos Vendidos");
-                printf("\n6. Listar Mas vendedor");
-                /*printf("\n7. Listar Bajas");
-                printf("\n8. Listar Tipos de Baja");
+                printf("\n5. Listar por Montos Facturados");
+                printf("\n6. Vendedor con Mayor Facturacion");
+                printf("\n7. Vendedor con Mayor Facturacion por Nivel");
+                /*printf("\n8. Listar Tipos de Baja");
                 printf("\n9. Buscar Empleado por Nombre y Apellido");
                 printf("\n10. Buscar Empleado por DNI");
                 printf("\n11. Buscar Nivel de Estudio");
@@ -189,7 +189,7 @@ int main()
                     break;
 
                 case 7:
-
+                    vendedoresMasGanadoresNivel(list1);
                     break;
 
                 case 8:
@@ -239,7 +239,7 @@ int main()
                 switch(E)
                 {
                 case 1:
-                    calcularComision(list1);
+                    calcularComision(list);
                     break;
                 case 2:
 
