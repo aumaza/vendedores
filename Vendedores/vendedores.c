@@ -2,9 +2,9 @@
 #include "misFunciones.h"
 #include "vendedores.h"
 #include "conio.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "stdio.h"
+#include "stdlib.h"
+#include "string.h"
 
 
 //CONSTRUCTORES
@@ -159,6 +159,19 @@ void showVendedoresComisiones(ArrayList* lista)
     printf("\nHay %d Vendedores\n", count);
 
     wait(SO);
+}
+
+void showVendedorAlfabetico(ArrayList* lista)
+{
+    lista->sort(lista,cmpVendedorName,1);
+    showVendedoresComisiones(lista);
+
+}
+
+void showVendedorMonto(ArrayList* lista)
+{
+    lista->sort(lista,cmpVendedorMonto,1);
+    showVendedoresComisiones(lista);
 }
 
 //PERSISTENCIA
@@ -395,7 +408,7 @@ void VendedorComisionNivel(ArrayList* lista)
 
             if(oneVendedor->nivel == JUNIOR)
             {
-                //lista->sort(lista,cmpVendedorNivel,1);
+
                 mostrarVendedoresComision(oneVendedor);
                 //saveVendedorComisiones("DATA_LEVEL_0.csv",lista);
                 counter++;
@@ -431,60 +444,134 @@ void VendedorComisionNivel(ArrayList* lista)
             }
             break;
         }
-        }
-
-
-
-        printf("\n%d", counter);
-
-        if(flag == 1)
-        {
-            printf("\nDATOS GUARDADOS EXITOSAMENTE!\n");
-        }
-        wait(SO);
-
     }
 
 
 
-    int selectLevel()
+    printf("\nHay %d Vendedores en el nivel %d", counter, nivel);
+
+    if(flag == 1)
     {
-        osDetect(SO);
-        int dato;
-
-        printf("\nIngrese el Nivel(0-2): ");
-        fflush(stdin);
-        scanf("%d", &dato);
-        getchar();
-
-        return dato;
-
+        printf("\nDATOS GUARDADOS EXITOSAMENTE!\n");
     }
+    wait(SO);
 
-    int cmpVendedorNivel(void* x, void* y)
+}
+
+
+
+int selectLevel()
+{
+    osDetect(SO);
+    int dato;
+
+    printf("\nIngrese el Nivel(0-2): ");
+    fflush(stdin);
+    scanf("%d", &dato);
+    getchar();
+
+    return dato;
+
+}
+
+
+//COMPARADORES
+//==============================================================
+
+int cmpVendedorNivel(void* x, void* y)
+{
+
+    Vendedores* vend1 = (Vendedores*)x;
+    Vendedores* vend2 = (Vendedores*)y;
+
+    int retorno;
+
+    if(vend1->nivel == vend2->nivel)
     {
 
-        Vendedores* vend1 = (Vendedores*)x;
-        Vendedores* vend2 = (Vendedores*)y;
+        retorno = 0;
+    }
+    else if(vend1->nivel > vend2->nivel)
+    {
 
-        int retorno;
+        retorno = 1;
+    }
+    else
+    {
+        retorno = -1;
+    }
 
-        if(vend1->nivel == vend2->nivel)
+    return retorno;
+}
+
+
+int cmpVendedorName(void* x, void* y)
+{
+
+    Vendedores* vende1 = (Vendedores*)x;
+    Vendedores* vende2 = (Vendedores*)y;
+
+    return strcmp(vende1->nombreVendedor, vende2->nombreVendedor);
+
+}
+
+int cmpVendedorMonto(void* x, void* y)
+{
+
+    Vendedores* vende1 = (Vendedores*)x;
+    Vendedores* vende2 = (Vendedores*)y;
+
+    int retorno;
+
+    if(vende1->montoVendido == vende2->montoVendido)
+    {
+
+        retorno = 0;
+    }
+    else if( vende1->montoVendido > vende2->montoVendido)
+    {
+
+        retorno = 1;
+    }
+    else
+    {
+        retorno = -1;
+    }
+
+    return retorno;
+
+}
+
+
+void vendeMax(ArrayList* lista)
+{
+    Vendedores* oneVendedor;
+
+
+    float maxMonto = 0;
+
+
+    for(int i=0; i<lista->len(lista); i++)
+    {
+        oneVendedor = (Vendedores*)lista->get(lista,i);
+
+
+        if(maxMonto < oneVendedor->montoVendido)
         {
+            maxMonto = oneVendedor->montoVendido;
 
-            retorno = 0;
-        }
-        else if(vend1->nivel > vend2->nivel)
-        {
+            mostrarUnVendedor(oneVendedor);
+            //break;
 
-            retorno = 1;
-        }
-        else
-        {
-            retorno = -1;
-        }
 
-        return retorno;
+
+        }
     }
 
 
+    // printf("\nEl vendedor con mas ventas es %d\n", max);
+    wait(SO);
+
+
+
+}

@@ -47,6 +47,10 @@ void mostrarUnVendedor(Vendedores* pVendedor);
 void mostrarVendedoresComision(Vendedores* pVendedor);
 void showVendedores(ArrayList* lista);
 void showVendedoresComisiones(ArrayList* lista);
+void showVendedorAlfabetico(ArrayList* lista);
+void showVendedorMonto(ArrayList* lista);
+void vendeMax(ArrayList* lista);
+
 
 //PERSISTENCIA
 void saveVendedor(char* path, ArrayList* lista);
@@ -62,6 +66,8 @@ int calcularComision(ArrayList* lista);
 void VendedorComisionNivel(ArrayList* lista);
 
 int cmpVendedorNivel(void* x, void* y);
+int cmpVendedorName(void* x, void* y);
+int cmpVendedorMonto(void* x, void* y);
 
 
 

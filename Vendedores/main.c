@@ -147,10 +147,10 @@ int main()
                 printf("\n1. Listar Vendedores");
                 printf("\n2. Listar Vendedores con Comisiones");
                 printf("\n3. Seleccionar Nivel");
-                /*printf("\n4. Listar Estado Civil");
-                printf("\n5. Listar Categorias");
-                printf("\n6. Listar Cursos Realizados");
-                printf("\n7. Listar Bajas");
+                printf("\n4. Listar Alfabeticamente");
+                printf("\n5. Listar por Montos Vendidos");
+                printf("\n6. Listar Mas vendedor");
+                /*printf("\n7. Listar Bajas");
                 printf("\n8. Listar Tipos de Baja");
                 printf("\n9. Buscar Empleado por Nombre y Apellido");
                 printf("\n10. Buscar Empleado por DNI");
@@ -177,15 +177,15 @@ int main()
                     break;
 
                 case 4:
-
+                    showVendedorAlfabetico(list1);
                     break;
 
                 case 5:
-
+                    showVendedorMonto(list1);
                     break;
 
                 case 6:
-
+                    vendeMax(list1);
                     break;
 
                 case 7:
@@ -254,7 +254,7 @@ int main()
 
         case 6:
             saveVendedor("DATA.csv",list);
-            saveVendedorComisiones("DATA1.csv",list1);
+            saveVendedorComisiones("DATA1.csv",list);
             break;
         }
     }
