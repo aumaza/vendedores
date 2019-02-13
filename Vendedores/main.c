@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "ArrayList.h"
 #include "misFunciones.h"
 #include "vendedores.h"
@@ -11,7 +12,6 @@ int main()
 
     ArrayList* list1 = al_newArrayList();
     validNULL(list1);
-
 
 
     VendedorParser("DATA.csv",list);
@@ -173,7 +173,60 @@ int main()
                     break;
 
                 case 3:
-                    VendedorComisionNivel(list1);
+                    //VendedorComisionNivel(list1);
+                    //VendedorNivel(list1);
+                    osDetect(SO);
+                    int counter = 0;
+                    int flag = 0;
+                    int nivel = selectLevel();
+
+                    header2();
+
+                    switch(nivel)
+                    {
+                    case 0:
+                            if(saveVendedorComisiones("JUNIOR.csv",list1->filter(list1,getLevel1)) == 1)
+                            {
+                            printf("\nJunior");
+
+                            showVendedoresComisiones(list1->filter(list1,getLevel1));
+                            counter++;
+                            flag = 1;
+                            }
+                            break;
+
+
+                    case 1:
+                            if(saveVendedorComisiones("STANDART.csv",list1->filter(list1,getLevel2)) == 1)
+                            {
+                            printf("\nStandart");
+
+                            showVendedoresComisiones(list1->filter(getLevel2));
+                            counter++;
+                            flag = 1;
+                            }
+                            break;
+
+                    case 2:
+                            if(saveVendedorComisiones("EXPERT.csv",list1->filter(list1,getLevel3)) == 1)
+                            {
+                            printf("\nExpert");
+
+                            showVendedoresComisiones(list1->filter(list1,getLevel3));
+                            counter++;
+                            flag = 1;
+                            }
+                            break;
+                    }
+                    footer2();
+                    printf("\nHay %d Vendedores en el nivel %d", counter, nivel);
+
+                    if(flag == 1)
+                    {
+                        printf("\nDATOS GUARDADOS EXITOSAMENTE!");
+                        footer2();
+                    }
+                    wait(SO);
                     break;
 
                 case 4:
@@ -239,7 +292,9 @@ int main()
                 switch(E)
                 {
                 case 1:
-                    calcularComision(list);
+                    list->map(list,calcComision);
+                    showVendedoresComisiones(list);
+                    //calcularComision(list);
                     break;
                 case 2:
 

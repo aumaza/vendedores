@@ -620,12 +620,11 @@ int resizeDown(ArrayList* pList)
     return returnAux;
 }
 
-int al_map(ArrayList* this, void (*pFunc)(ArrayList*)){
+int al_map(ArrayList* this, void (*pFunc)(void*)){
 
     int todoOk = 0;
 
     if(this != NULL && pFunc != NULL){
-
 
 
        for(int i=0; i < this->len(this); i++){
@@ -636,6 +635,28 @@ int al_map(ArrayList* this, void (*pFunc)(ArrayList*)){
     }
 
 return todoOk;
+}
+
+ArrayList* al_filter(ArrayList* this, int (*pFunc)(void*))
+{
+    ArrayList* subLista = NULL;
+    int aux = -1;
+    subLista = al_newArrayList();
+
+
+    if( this != NULL )
+    {
+        for(int i=0; i< this->len(this); i++)
+        {
+            aux = pFunc(this->get(this, i));
+
+            if(subLista != NULL && aux == 1)
+            {
+                subLista->add(subLista, this->get(this, i));
+            }
+        }
+    }
+    return subLista;
 }
 
 

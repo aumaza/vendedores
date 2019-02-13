@@ -40,6 +40,7 @@ struct ArrayList{
     int     (*map)();
     struct ArrayList* (* clone)();
     struct ArrayList* (*subList)();
+    struct ArrayList* (* filter) ();
     int     (*deleteArrayList)();
 
 }typedef ArrayList;
@@ -232,7 +233,9 @@ int expand(ArrayList* this,int index);
  */
 int contract(ArrayList* this,int index);
 
-int al_map(ArrayList* this, void (*pFunc)());
+int al_map(ArrayList* this, void (*pFunc)(void*));
+
+ArrayList* al_filter(ArrayList* this, int (pFunc)(void*));
 
 
 // Private function

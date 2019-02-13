@@ -205,8 +205,9 @@ void saveVendedor(char* path, ArrayList* lista)
     }
 }
 
-void saveVendedorComisiones(char* path, ArrayList* lista)
+int saveVendedorComisiones(char* path, ArrayList* lista)
 {
+    int aux = -1;
     FILE* fp;
     fp=fopen(path,"w");
     Vendedores* nVendedor;
@@ -218,11 +219,15 @@ void saveVendedorComisiones(char* path, ArrayList* lista)
         for(int i=0; i<lista->len(lista); i++)
         {
             nVendedor = (Vendedores*)lista->get(lista,i);
+            if(nVendedor->isEmpty == 1)
+            {
             fprintf(fp,MASC_VENDE_C,nVendedor->id,nVendedor->nombreVendedor,nVendedor->nivel,nVendedor->cantProductos,nVendedor->montoVendido,nVendedor->comision,nVendedor->isEmpty);
-
+            }
         }
+        aux = 1;
         fclose(fp);
     }
+    return aux;
 }
 
 //CARGADOR DE DATOS
@@ -336,7 +341,6 @@ int calcularComision(ArrayList* lista)
         {
             comision = oneVendedor->montoVendido * 0.02;
             oneVendedor->comision = comision;
-
             flag = 1;
 
         }
@@ -347,7 +351,6 @@ int calcularComision(ArrayList* lista)
             {
                 comision = oneVendedor->montoVendido * 0.035;
                 oneVendedor->comision = comision;
-
                 flag = 1;
             }
 
@@ -355,8 +358,6 @@ int calcularComision(ArrayList* lista)
             {
                 comision = oneVendedor->montoVendido * 0.05;
                 oneVendedor->comision = comision;
-
-
                 flag = 1;
             }
 
@@ -399,7 +400,6 @@ void VendedorComisionNivel(ArrayList* lista)
 {
     osDetect(SO);
 
-
     Vendedores* oneVendedor;
     int flag = 0;
     int counter = 0;
@@ -410,7 +410,6 @@ void VendedorComisionNivel(ArrayList* lista)
     {
         oneVendedor = (Vendedores*)lista->get(lista,i);
 
-
         switch(nivel)
         {
         case JUNIOR:
@@ -419,12 +418,10 @@ void VendedorComisionNivel(ArrayList* lista)
             {
 
                 mostrarVendedoresComision(oneVendedor);
-                //saveVendedorComisiones("DATA_LEVEL_0.csv",lista);
+                //saveVendedorComisiones("DATA_LEVEL_0.csv",lista->filter(lista,getLevel1));
                 counter++;
                 flag = 1;
                 break;
-
-
             }
             break;
 
@@ -434,10 +431,9 @@ void VendedorComisionNivel(ArrayList* lista)
             if(oneVendedor->nivel == STANDART)
             {
                 mostrarVendedoresComision(oneVendedor);
-                //saveVendedorComisiones("DATA_LEVEL_1.csv",lista);
+                //saveVendedorComisiones("DATA_LEVEL_1.csv",lista->filter(lista,getLevel1));
                 counter++;
                 flag = 1;
-
             }
             break;
 
@@ -446,15 +442,13 @@ void VendedorComisionNivel(ArrayList* lista)
             if(oneVendedor->nivel == EXPERT)
             {
                 mostrarVendedoresComision(oneVendedor);
-                //saveVendedorComisiones("DATA_LEVEL_2.csv", lista);
+                saveVendedorComisiones("DATA_LEVEL_2.csv", lista);
                 counter++;
                 flag = 1;
-
             }
             break;
         }
     }
-
 
     footer2();
     printf("\nHay %d Vendedores en el nivel %d", counter, nivel);
@@ -473,15 +467,28 @@ void VendedorComisionNivel(ArrayList* lista)
 int selectLevel()
 {
     osDetect(SO);
-    int dato;
+    int aux;
+    printf("\nIngrese el Nivel(1 / 2 / 3): ");
 
-    printf("\nIngrese el Nivel(0-2): ");
-    fflush(stdin);
-    scanf("%d", &dato);
-    getchar();
+    int dato = optionValid();
 
-    return dato;
+    switch(dato)
+    {
+    case 1:
+        aux = 0;
+      break;
 
+    case 2:
+        aux = 1;
+        break;
+
+    case 3:
+        aux = 2;
+        break;
+
+    }
+
+    return aux;
 }
 
 
@@ -509,6 +516,33 @@ int cmpVendedorNivel(void* x, void* y)
     else
     {
         retorno = -1;
+    }
+
+    return retorno;
+}
+
+
+int cmpVendedorLevel(void* x)
+{
+
+    Vendedores* vend1 = (Vendedores*)x;
+    //Vendedores* vend2 = (Vendedores*)y;
+
+    int retorno = -1;
+
+    if(vend1->nivel == 0)
+    {
+
+        retorno = 1;
+    }
+    else if(vend1->nivel == 1)
+    {
+
+        retorno = 1;
+    }
+    else
+    {
+        retorno = 1;
     }
 
     return retorno;
@@ -575,12 +609,10 @@ void vendeMax(ArrayList* lista)
         }
     }
 
-        mostrarVendedoresComision(maxVendedor);
-        footer2();
-
+    mostrarVendedoresComision(maxVendedor);
+    footer2();
 
     wait(SO);
-
 }
 
 
@@ -624,40 +656,168 @@ void vendedoresMasGanadoresNivel(ArrayList* lista)
         }
 
     }
-suma = counter+counter1+counter2;
-footer2();
-printf("\nHay %d Vendedores que mas Facturaron", suma);
-printf("\n%d son del nivel JUNIOR", counter);
-printf("\n%d son del nivel STANDART", counter1);
-printf("\n%d son del nivel EXPERT", counter2);
-footer2();
+    suma = counter+counter1+counter2;
+    footer2();
+    printf("\nHay %d Vendedores que mas Facturaron", suma);
+    printf("\n%d son del nivel JUNIOR", counter);
+    printf("\n%d son del nivel STANDART", counter1);
+    printf("\n%d son del nivel EXPERT", counter2);
+    footer2();
 
 
-wait(SO);
+    wait(SO);
 }
 
 
 void header1()
 {
-printf("\n=====================================================================================");
-printf("\nID          NOMBRE VENDEDOR            NIVEL       PRODUCTOS      FACTURADO");
-printf("\n=====================================================================================");
+    printf("\n=====================================================================================");
+    printf("\nID          NOMBRE VENDEDOR            NIVEL       PRODUCTOS      FACTURADO");
+    printf("\n=====================================================================================");
 }
 
 
 void header2()
 {
-printf("\n====================================================================================================");
-printf("\nID          NOMBRE VENDEDOR            NIVEL       PRODUCTOS      FACTURADO        COMISION");
-printf("\n====================================================================================================");
+    printf("\n====================================================================================================");
+    printf("\nID          NOMBRE VENDEDOR            NIVEL       PRODUCTOS      FACTURADO        COMISION");
+    printf("\n====================================================================================================");
 }
 
 void footer1()
 {
-printf("\n=====================================================================================");
+    printf("\n=====================================================================================");
 }
 
 void footer2()
 {
-printf("\n====================================================================================================");
+    printf("\n====================================================================================================");
+}
+
+int calcComision(Vendedores* oneVendedor)
+{
+    //int flag = 0;
+    float comision = 0;
+
+    if(oneVendedor->nivel == JUNIOR && oneVendedor->isEmpty == 1)
+    {
+        comision = oneVendedor->montoVendido * 0.02;
+        oneVendedor->comision = comision;
+    }
+
+    else if((oneVendedor->nivel == STANDART || oneVendedor->nivel == EXPERT))
+    {
+        if(oneVendedor->cantProductos < 100)
+        {
+            comision = oneVendedor->montoVendido * 0.035;
+            oneVendedor->comision = comision;
+        }
+
+        if(oneVendedor->cantProductos > 100)
+        {
+            comision = oneVendedor->montoVendido * 0.05;
+            oneVendedor->comision = comision;
+        }
+    }
+    return 0;
+}
+
+
+int getLevel1(Vendedores* x)
+{
+    int aux = -1;
+
+    //Vendedores* pVendedor = (Vendedores*)x;
+
+    if(x->nivel == JUNIOR)
+    {
+        aux = 1;
+    }
+    return aux;
+}
+
+int getLevel2(Vendedores* x)
+{
+
+    int aux = -1;
+
+    //Vendedores* pVendedor = (Vendedores*)x;
+
+    if(x->nivel == STANDART)
+    {
+        aux = 1;
+    }
+    return aux;
+}
+
+int getLevel3(Vendedores* x)
+{
+    int aux = -1;
+    //Vendedores* pVendedor = (Vendedores*) x;
+
+    if(x->nivel == EXPERT)
+    {
+        aux = 1;
+    }
+
+    return aux;
+}
+
+void VendedorNivel(ArrayList* lista)
+{
+    osDetect(SO);
+
+    int flag = 0;
+    int counter = 0;
+    int nivel = selectLevel();
+
+    header2();
+
+    switch(nivel)
+    {
+    case 0:
+
+        if(saveVendedorComisiones("DATA_NIVEL_JUNIOR.csv",lista->filter(lista,getLevel1)) == 1)
+        {
+
+            //showVendedoresComisiones(lista);
+            counter++;
+            flag = 1;
+        }
+        break;
+
+
+    case 1:
+
+        if(saveVendedorComisiones("DATA_NIVEL_STANDART.csv",lista->filter(lista,getLevel2)) == 1)
+            {
+                //showVendedoresComisiones(lista->filter(lista,getLevel2));
+                counter++;
+                flag = 1;
+            }
+        break;
+
+    case 2:
+
+        if(saveVendedorComisiones("DATA_NIVEL_EXPERT.csv",lista->filter(lista,getLevel3)) == 1)
+        {
+            //showVendedoresComisiones(lista->filter(lista,getLevel3));
+            counter++;
+            flag = 1;
+        }
+        break;
+
+    }
+
+
+    footer2();
+    printf("\nHay %d Vendedores en el nivel %d", counter, nivel);
+
+    if(flag == 1)
+    {
+        printf("\nDATOS GUARDADOS EXITOSAMENTE!");
+        footer2();
+    }
+    wait(SO);
+
 }

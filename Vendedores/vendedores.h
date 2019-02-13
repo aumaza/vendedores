@@ -38,6 +38,9 @@ void addVendedor(ArrayList* lista);
 //SELECCIONADOR
 int selectVendedor(ArrayList* lista);
 int selectLevel();
+int getLevel1(Vendedores* x);
+int getLevel2(Vendedores* x);
+int getLevel3(Vendedores* x);
 
 //BUSCA LIBRE
 int searchFreeVendedor(ArrayList* lista);
@@ -55,7 +58,7 @@ void vendedoresMasGanadoresNivel(ArrayList* lista);
 
 //PERSISTENCIA
 void saveVendedor(char* path, ArrayList* lista);
-void saveVendedorComisiones(char* path, ArrayList* lista);
+int saveVendedorComisiones(char* path, ArrayList* lista);
 
 //LOAD DATOS
 void VendedorParser(char* path, ArrayList* lista);
@@ -65,10 +68,13 @@ void VendedorComisionParser(char* path, ArrayList* lista);
 
 int calcularComision(ArrayList* lista);
 void VendedorComisionNivel(ArrayList* lista);
+void VendedorNivel(ArrayList* lista);
+int calcComision(Vendedores* oneVendedor);
 
 int cmpVendedorNivel(void* x, void* y);
 int cmpVendedorName(void* x, void* y);
 int cmpVendedorMonto(void* x, void* y);
+int cmpVendedorLevel(void* x);
 
 
 void header1();
