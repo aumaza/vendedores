@@ -1,0 +1,187 @@
+# depslib dependency file v1.0
+1549657123 source:c:\test\vendedores\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1546567116 .h"
+
+1549659076 c:\test\vendedores\arraylist.h
+
+1549649688 source:c:\test\vendedores\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"misFunciones.h"
+	"vendedores.h"
+
+1549576290 s.h"
+
+1549394824 c:\test\vendedores\misfunciones.h
+
+1549648410 c:\test\vendedores\vendedores.h
+
+1549394830 source:c:\test\vendedores\misfunciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	<time.h>
+	"misFunciones.h"
+
+1549394829 nes.h"
+
+1549491695 source:c:\test\vendedores\vendedores.c
+	"ArrayList.h"
+	"misFunciones.h"
+	"vendedores.h"
+	"conio.h"
+	"stdio.h"
+	"stdlib.h"
+	"string.h"
+
+1549491695 
+
+1546567116 source:/home/aumaza_mecon/Proyectos/CodeBlocks Projects/Vendedores/ArrayList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1546566060 /home/aumaza_mecon/Proyectos/CodeBlocks Projects/Vendedores/ArrayList.h
+
+1549645262 source:/home/aumaza_mecon/Proyectos/CodeBlocks Projects/Vendedores/main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"misFunciones.h"
+	"vendedores.h"
+
+1549394823 /home/aumaza_mecon/Proyectos/CodeBlocks Projects/Vendedores/misFunciones.h
+
+1549647458 /home/aumaza_mecon/Proyectos/CodeBlocks Projects/Vendedores/vendedores.h
+
+1549394829 source:/home/aumaza_mecon/Proyectos/CodeBlocks Projects/Vendedores/misFunciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	<time.h>
+	"misFunciones.h"
+
+1546567116 source:/home/augusto/projects/Vendedores/ArrayList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1546566060 /home/augusto/projects/Vendedores/ArrayList.h
+
+1549576290 source:/home/augusto/projects/Vendedores/main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"misFunciones.h"
+	"vendedores.h"
+
+1549394823 /home/augusto/projects/Vendedores/misFunciones.h
+
+1549563489 /home/augusto/projects/Vendedores/vendedores.h
+
+1549394829 source:/home/augusto/projects/Vendedores/misFunciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	<time.h>
+	"misFunciones.h"
+
+1549576407 source:/home/augusto/projects/Vendedores/vendedores.c
+	"ArrayList.h"
+	"misFunciones.h"
+	"vendedores.h"
+	"conio.h"
+	"stdio.h"
+	"stdlib.h"
+	"string.h"
+
+1549886148 source:/home/augusto/projects/Vendedores/ArrayList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1549659078 /home/augusto/projects/Vendedores/ArrayList.h
+
+1549910037 source:/home/augusto/projects/Vendedores/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"misFunciones.h"
+	"vendedores.h"
+
+1549394824 /home/augusto/projects/Vendedores/misFunciones.h
+
+1549890705 /home/augusto/projects/Vendedores/vendedores.h
+
+1549394830 source:/home/augusto/projects/Vendedores/misFunciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	<time.h>
+	"misFunciones.h"
+
+1549910077 source:/home/augusto/projects/Vendedores/vendedores.c
+	"ArrayList.h"
+	"misFunciones.h"
+	"vendedores.h"
+	"conio.h"
+	"stdio.h"
+	"stdlib.h"
+	"string.h"
+
+1549886148 source:/home/aumaza_mecon/Proyectos/CodeBlocks Projects/Vendedores/ArrayList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1549659078 /home/aumaza_mecon/Proyectos/CodeBlocks Projects/Vendedores/ArrayList.h
+
+1549912046 source:/home/aumaza_mecon/Proyectos/CodeBlocks Projects/Vendedores/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"misFunciones.h"
+	"vendedores.h"
+
+1549394824 /home/aumaza_mecon/Proyectos/CodeBlocks Projects/Vendedores/misFunciones.h
+
+1549890705 /home/aumaza_mecon/Proyectos/CodeBlocks Projects/Vendedores/vendedores.h
+
+1549394830 source:/home/aumaza_mecon/Proyectos/CodeBlocks Projects/Vendedores/misFunciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	<time.h>
+	"misFunciones.h"
+
+1549910077 source:/home/aumaza_mecon/Proyectos/CodeBlocks Projects/Vendedores/vendedores.c
+	"ArrayList.h"
+	"misFunciones.h"
+	"vendedores.h"
+	"conio.h"
+	"stdio.h"
+	"stdlib.h"
+	"string.h"
+
